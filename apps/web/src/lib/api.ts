@@ -1,4 +1,5 @@
-const BASE = "/api-server/api/pharma";
+// const BASE = "/api-server/api/pharma";// this is the cause of the problem in ghoulelm code
+const BASE = import.meta.env.VITE_API_URL || "http://localhost:3000/api/pharma";
 
 async function get<T>(path: string, params?: Record<string, string>): Promise<T> {
   const url = new URL(BASE + path, window.location.origin);

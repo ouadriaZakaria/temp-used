@@ -75,13 +75,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       {/* Sidebar */}
       <aside className="hidden md:flex w-64 flex-col border-r border-sidebar-border bg-sidebar">
         {/* Logo block */}
-        <div className="flex items-center gap-3 px-5 py-5 border-b border-sidebar-border">
-          <img src={logo} alt="JamilaPharm" className="w-10 h-10 rounded-lg object-cover shadow-sm" />
+        <div className="flex items-center h-25 gap-3 px-5 py-5 border-b border-sidebar-border">
+          <img src={logo} alt="JamilaPharm" className="w-17 h-17 align-center rounded-lg object-cover shadow-sm" />
           <div>
             <div className="font-bold text-sidebar-foreground leading-tight">JamilaPharm</div>
             <div className="text-xs text-muted-foreground">Supervision pharmacie</div>
-          </div>
         </div>
+          </div>
 
         <nav className="flex-1 p-3 space-y-0.5">
           {nav.map(({ to, label, icon: Icon }) => {

@@ -18,7 +18,7 @@ Stack : React + Vite (frontend) · Node.js + Express (backend) · PostgreSQL (ba
 ### 1. Cloner le dépôt
 
 ```bash
-git clone https://github.com/yourname/temp-used
+git clone https://github.com/ouadriaZakaria/temp-used
 cd temp-used
 ```
 
@@ -29,6 +29,14 @@ pnpm install
 ```
 
 ### 3. Créer la base de données et restaurer les données
+
+Décompresser le fichier zip (PowerShell) :
+
+```bash
+Expand-Archive -Path apps/api/database/dump.sql.zip -DestinationPath apps/api/database/
+```
+
+Créer la base et restaurer :
 
 ```bash
 psql -U postgres -c "CREATE DATABASE pharm_merou;"
@@ -83,7 +91,7 @@ temp-used/
 ├── apps/
 │   ├── api/                        → Serveur Express (API REST)
 │   │   ├── src/routes/pharma.ts    → Toutes les routes API
-│   │   └── database/dump.sql       → Sauvegarde de la base de données
+│   │   └── database/dump.sql.zip   → Sauvegarde compressée de la base de données
 │   └── web/                        → Interface React + Vite
 │       ├── src/pages/              → Pages de l'application
 │       ├── src/lib/api.ts          → Client API
@@ -117,7 +125,8 @@ Si vous modifiez les données et voulez pousser une nouvelle sauvegarde :
 
 ```bash
 pg_dump -U postgres --no-owner --no-acl pharm_merou > apps/api/database/dump.sql
-git add apps/api/database/dump.sql
+Compress-Archive -Path apps/api/database/dump.sql -DestinationPath apps/api/database/dump.sql.zip -Force
+git add apps/api/database/dump.sql.zip
 git commit -m "update database dump"
 git push
 ```

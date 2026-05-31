@@ -4,7 +4,6 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import { fileURLToPath } from "url";
 
-// Fix __dirname in ESM (VERY IMPORTANT)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -34,10 +33,10 @@ export default defineConfig({
     host: true,
 
     proxy: {
-      "/api": {
-        target: "http://localhost:8080",
+      "/api-server": {
+        target: "http://localhost:3000",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
+        rewrite: (path) => path.replace(/^\/api-server/, ""),
       },
     },
   },
